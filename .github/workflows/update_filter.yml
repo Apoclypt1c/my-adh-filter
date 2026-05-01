@@ -21,23 +21,29 @@ jobs:
           curl -sL "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/filter.list" -o s2.txt
           curl -sL "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/HTTPDNS.Block.list" -o s3.txt
           
-          # 2. 写入文件头
+          # 2. 预处理：将所有规则提取并去重到一个临时文件中
+          # 处理 host 格式
+          grep -Ei "^host" s1.txt s2.txt | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' > rules.tmp
+          # 处理 ip-cidr 格式
+          grep -Ei "^ip-cidr" s1.txt s2.txt | awk -F',' '{print $2}' | sed 's/ //g' >> rules.tmp
+          # 处理 DOMAIN 格式
+          grep -Ei "^DOMAIN" s3.txt | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' >> rules.tmp
+          
+          # 执行去重并清理空行[cite: 4]
+          sort -u rules.tmp | grep -v "^$" > unique_rules.tmp
+          
+          # 3. 计算规则总数
+          rule_count=$(wc -l < unique_rules.tmp)
+          
+          # 4. 生成最终文件头[cite: 4]
           echo "! Title: AdGuardHomeAllAdBlockList" > AdGuardHomeAllAdBlockList.txt
-          echo "! Last Modified: $(date)" >> AdGuardHomeAllAdBlockList.txt
-          echo "! Source: zirawell, fmz200, VirgilClyne" >> AdGuardHomeAllAdBlockList.txt
+          echo "! Authors: zirawell, fmz200, VirgilClyne" >> AdGuardHomeAllAdBlockList.txt
+          echo "! Last Updated: $(date '+%Y-%m-%d %H:%M:%S') (UTC)" >> AdGuardHomeAllAdBlockList.txt
+          echo "! Total Rules: $rule_count" >> AdGuardHomeAllAdBlockList.txt
           echo "!" >> AdGuardHomeAllAdBlockList.txt
 
-          # 3. 聚合处理：将 s1, s2 中 host 开头的行转换，并将 s1, s2 中 ip-cidr 的行直接提取
-          grep -Ei "^host" s1.txt s2.txt | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' >> AdGuardHomeAllAdBlockList.txt
-          grep -Ei "^ip-cidr" s1.txt s2.txt | awk -F',' '{print $2}' | sed 's/ //g' >> AdGuardHomeAllAdBlockList.txt
-          
-          # 4. 处理 s3 (DOMAIN 格式)
-          grep -Ei "^DOMAIN" s3.txt | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' >> AdGuardHomeAllAdBlockList.txt
-
-          # 5. 排序与彻底去重
-          head -n 4 AdGuardHomeAllAdBlockList.txt > final.txt
-          tail -n +5 AdGuardHomeAllAdBlockList.txt | grep -v "^$" | sort -u >> final.txt
-          mv final.txt AdGuardHomeAllAdBlockList.txt
+          # 5. 合并规则主体
+          cat unique_rules.tmp >> AdGuardHomeAllAdBlockList.txt
 
       - name: Commit and Push
         run: |
@@ -45,8 +51,8 @@ jobs:
           git config --local user.name "GitHub Action"
           git add AdGuardHomeAllAdBlockList.txt
           if git diff --staged --quiet; then
-            echo "No changes"
+            echo "No changes detected."
             exit 0
           fi
-          git commit -m "Auto-update $(date +'%Y-%m-%d')"
+          git commit -m "Auto-update: $rule_count rules on $(date +'%Y-%m-%d')"
           git push
