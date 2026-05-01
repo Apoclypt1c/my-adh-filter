@@ -1,6 +1,7 @@
 ! Title: AdGuardHomeAllAdBlockList
-! Last Modified: Fri May  1 15:16:34 UTC 2026
-! Source: zirawell, fmz200, VirgilClyne
+! Authors: zirawell, fmz200, VirgilClyne
+! Last Updated: 2026-05-01 15:23:54 (UTC)
+! Total Rules: 3186
 !
 1.202.85.193/32
 101.124.19.122/32
