@@ -1,6 +1,6 @@
 ! Title: AdGuardHomeAllAdBlockList
-! Last Modified: Fri May  1 15:03:37 UTC 2026
-! Source: Mixed (zirawell & fmz200)
+! Last Modified: Fri May  1 15:16:34 UTC 2026
+! Source: zirawell, fmz200, VirgilClyne
 !
 1.202.85.193/32
 101.124.19.122/32
@@ -545,6 +545,7 @@
 ||adzerk.net^
 ||ae-gb.mgid.com^
 ||aecpm.alicdn.com^
+||aedns.weixin.qq.com^
 ||aegis.qq.com^
 ||aerserv.com^
 ||aeventlog.beacon.qq.com^
@@ -1203,10 +1204,15 @@
 ||dns.alidns.com^
 ||dns.jd.com^
 ||dns.qq.com^
+||dns.weibo.cn^
 ||dns.weixin.qq.com.cn^
+||dns.weixin.qq.com^
+||dnspod.meituan.httpdns.qcloud.com^
+||dnspod.meituan.httpdns.start.qcloud.com^
 ||dnspod.meituan.httpdns^
 ||doc.go.sohu.com^
 ||docer.com^
+||doh.iqiyi.com^
 ||dol.deliver.ifeng.com^
 ||dolphin.caixin.com^
 ||dolphin.deliver.ifeng.com^
@@ -1529,13 +1535,28 @@
 ||hpd.baidu.com^
 ||hs.qhupdate.com^
 ||ht.www.sogou.com^
+||httpdns-api.aliyuncs.com^
+||httpdns-sc.aliyuncs.com^
+||httpdns-sdk.n.netease.com^
+||httpdns.alicdn.com^
+||httpdns.baidu.com^
 ||httpdns.baidubce.com^
+||httpdns.bcelive.com^
+||httpdns.bilivideo.com^
+||httpdns.c.cdnhwc2.com^
+||httpdns.calorietech.com^
+||httpdns.immomo.com^
+||httpdns.kg.qq.com^
 ||httpdns.meituan.com^
 ||httpdns.music.163.com^
 ||httpdns.n.netease.com^
+||httpdns.pro^
+||httpdns.push.oppomobile.com^
+||httpdns.volcengineapi.com^
 ||httpdns.yunxindns.com^
 ||httpdnsmultiapi.meituan.com^
 ||httpdnsmultiapivip.meituan.com^
+||httpsdns.baidu.com^
 ||huatuocode.huatuo.qq.com^
 ||hub5pn.wap.sandai.net^
 ||hudong.alicdn.com^
@@ -1836,6 +1857,7 @@
 ||localytics.com^
 ||location.ximalaya.com^
 ||locdrop.query.yahoo.com^
+||lofter.httpdns.c.163.com^
 ||log-api.pangolin-sdk-toutiao-b.com^
 ||log-api.pangolin-sdk-toutiao.com^
 ||log-dmp.suishenyun.cn^
@@ -2075,6 +2097,7 @@
 ||msync-im1-vip6-std.easemob.com^
 ||mtj.baidu.com^
 ||munchkin.marketo.net^
+||music.httpdns.c.163.com^
 ||mvads.kugou.com^
 ||mxpnl.com^
 ||my.mobfox.com^
@@ -2417,6 +2440,7 @@
 ||rescn.u3.ucweb.com^
 ||resolver.gslb.mi-idc.com^
 ||resolver.msg.xiaomi.net^
+||resolvers-cn.httpdns.aliyuncs.com^
 ||resource.baomihua.com^
 ||revjet.com^
 ||rhdc-acs.youku.com^
@@ -3141,6 +3165,7 @@
 ||yuedu.iqiyi.com^
 ||yun.tuia.cn^
 ||yunxinfw.com^
+||yuyin-httpdns.gslb.yy.com^
 ||yx.lenovomm.com^
 ||z.moatads.com^
 ||z.sora.yoyi.com.cn^
