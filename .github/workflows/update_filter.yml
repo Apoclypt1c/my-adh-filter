@@ -1,10 +1,12 @@
 name: Update ADH Filter
 on:
   schedule:
-    - cron: '0 0 * * *'
-  workflow_dispatch:
+    - cron: '0 0 * * *' # 每天北京时间上午 8:00 自动运行
+  workflow_dispatch: # 支持手动运行
 
-# 必须增加权限声明，否则脚本无法推送文件回仓库
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # 消除 Node.js 弃用警告
+
 permissions:
   contents: write
 
@@ -13,21 +15,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4 # 升级到 v4 解决 Node.js 版本警告
+        uses: actions/checkout@v4
 
       - name: Download and Convert
         run: |
-          curl -sL "https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list" -o raw_list.txt
+          # 1. 下载两个源文件
+          curl -sL "https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list" -o source1.txt
+          curl -sL "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/filter.list" -o source2.txt
           
+          # 2. 初始化目标文件并写入文件头
           echo "! Title: AdGuardHomeAllAdBlockList" > AdGuardHomeAllAdBlockList.txt
           echo "! Last Modified: $(date)" >> AdGuardHomeAllAdBlockList.txt
-          echo "! Source: zirawell R-Store" >> AdGuardHomeAllAdBlockList.txt
+          echo "! Source: Mixed (zirawell & fmz200)" >> AdGuardHomeAllAdBlockList.txt
           echo "!" >> AdGuardHomeAllAdBlockList.txt
 
-          grep -Ei "^host" raw_list.txt | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' >> AdGuardHomeAllAdBlockList.txt
-          grep -Ei "^ip-cidr" raw_list.txt | awk -F',' '{print $2}' | sed 's/ //g' >> AdGuardHomeAllAdBlockList.txt
+          # 3. 处理第一个源文件 (zirawell)
+          grep -Ei "^host" source1.txt | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' >> AdGuardHomeAllAdBlockList.txt
+          grep -Ei "^ip-cidr" source1.txt | awk -F',' '{print $2}' | sed 's/ //g' >> AdGuardHomeAllAdBlockList.txt
           
+          # 4. 处理第二个源文件 (fmz200)
+          # 注意：fmz200 的规则通常也是 HOST 或 HOST-SUFFIX 开头
+          grep -Ei "^host" source2.txt | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' >> AdGuardHomeAllAdBlockList.txt
+          grep -Ei "^ip-cidr" source2.txt | awk -F',' '{print $2}' | sed 's/ //g' >> AdGuardHomeAllAdBlockList.txt
+
+          # 5. 全局去重并保留文件头
+          # 提取前 4 行文件头
           head -n 4 AdGuardHomeAllAdBlockList.txt > header.tmp
+          # 对第 5 行以后的所有合并内容进行统一排序和去重
           tail -n +5 AdGuardHomeAllAdBlockList.txt | sort -u >> header.tmp
           mv header.tmp AdGuardHomeAllAdBlockList.txt
 
@@ -38,10 +52,11 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add AdGuardHomeAllAdBlockList.txt
-          # 检查是否有内容变化，防止无意义的报错
+          
           if git diff --staged --quiet; then
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "Auto-update: AdGuardHomeAllAdBlockList $(date +'%Y-%m-%d')"
+          
+          git commit -m "Auto-update: Combined AdGuardHomeAllAdBlockList $(date +'%Y-%m-%d')"
           git push
