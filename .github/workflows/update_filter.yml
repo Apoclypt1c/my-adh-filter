@@ -16,30 +16,31 @@ jobs:
 
       - name: Download and Convert
         run: |
-          # 1. 下载四个源文件
+          # 1. 下载源文件
           curl -sL "https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list" -o s1.txt
           curl -sL "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/filter.list" -o s2.txt
           curl -sL "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/HTTPDNS.Block.list" -o s3.txt
           curl -sL "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list" -o s4.txt
           
-          # 2. 合并所有源文件到一个大临时文件进行统一解析
-          cat s1.txt s2.txt s3.txt s4.txt > all_sources.tmp
+          # 2. 合并并初步清理：删除空行和以 # 或 ; 开头的纯注释行
+          cat s1.txt s2.txt s3.txt s4.txt | sed 's/ //g' | grep -vE "^(#|;|$)" > clean_source.tmp
 
-          # 3. 多格式并行解析逻辑
-          # 3a. 处理 HOST 和 DOMAIN 类 (转换为 ||domain.com^)
-          grep -Ei "^(host|domain|host-suffix|domain-suffix)" all_sources.tmp | grep -iv "keyword" | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' > rules.tmp
+          # 3. 深度解析逻辑
+          # 3a. 提取 HOST/DOMAIN 类 (转换为 ||domain.com^)
+          grep -Ei "^(host|domain)" clean_source.tmp | grep -iv "keyword" | awk -F',' '{print "||" $2 "^"}' >> rules.tmp
           
-          # 3b. 处理 DOMAIN-KEYWORD (转换为 *keyword*)
-          grep -Ei "domain-keyword" all_sources.tmp | awk -F',' '{print "*" $2 "*"}' | sed 's/ //g' >> rules.tmp
+          # 3b. 提取 KEYWORD 类 (转换为 *keyword*)
+          # 兼容 DOMAIN-KEYWORD 或直接是 KEYWORD 开头的行
+          grep -Ei "keyword" clean_source.tmp | awk -F',' '{print "*" $2 "*"}' >> rules.tmp
           
-          # 3c. 处理 IP-CIDR 类 (直接保留格式)[cite: 4]
-          grep -Ei "^(ip-cidr|ip6-cidr)" all_sources.tmp | awk -F',' '{print $2}' | sed 's/ //g' >> rules.tmp
+          # 3c. 提取 IP-CIDR 类
+          grep -Ei "^ip" clean_source.tmp | awk -F',' '{print $2}' >> rules.tmp
           
-          # 4. 彻底去重、清理空行并排序[cite: 4]
+          # 4. 彻底去重排序
           sort -u rules.tmp | grep -v "^$" > unique_rules.tmp
           rule_count=$(wc -l < unique_rules.tmp)
           
-          # 5. 生成最终文件[cite: 4]
+          # 5. 生成结果文件
           echo "! Title: AdGuardHomeAllAdBlockList" > AdGuardHomeAllAdBlockList.txt
           echo "! Authors: zirawell, fmz200, VirgilClyne, ACL4SSR" >> AdGuardHomeAllAdBlockList.txt
           echo "! Last Updated: $(date '+%Y-%m-%d %H:%M:%S') (UTC)" >> AdGuardHomeAllAdBlockList.txt
