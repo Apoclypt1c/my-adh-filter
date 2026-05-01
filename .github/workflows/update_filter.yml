@@ -1,7 +1,7 @@
 name: Update ADH Filter
 on:
   schedule:
-    - cron: '0 0 * * *' # 每天北京时间上午 8:00
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 permissions:
@@ -16,33 +16,35 @@ jobs:
 
       - name: Download and Convert
         run: |
-          # 1. 下载所有源文件
+          # 1. 下载四个源文件
           curl -sL "https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list" -o s1.txt
           curl -sL "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/filter.list" -o s2.txt
           curl -sL "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/HTTPDNS.Block.list" -o s3.txt
+          curl -sL "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list" -o s4.txt
           
-          # 2. 预处理：将所有规则提取并去重到一个临时文件中
-          # 处理 host 格式
-          grep -Ei "^host" s1.txt s2.txt | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' > rules.tmp
-          # 处理 ip-cidr 格式
-          grep -Ei "^ip-cidr" s1.txt s2.txt | awk -F',' '{print $2}' | sed 's/ //g' >> rules.tmp
-          # 处理 DOMAIN 格式
-          grep -Ei "^DOMAIN" s3.txt | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' >> rules.tmp
+          # 2. 合并所有源文件到一个大临时文件进行统一解析
+          cat s1.txt s2.txt s3.txt s4.txt > all_sources.tmp
+
+          # 3. 多格式并行解析逻辑
+          # 3a. 处理 HOST 和 DOMAIN 类 (转换为 ||domain.com^)
+          grep -Ei "^(host|domain|host-suffix|domain-suffix)" all_sources.tmp | grep -iv "keyword" | awk -F',' '{print "||" $2 "^"}' | sed 's/ //g' > rules.tmp
           
-          # 执行去重并清理空行[cite: 4]
+          # 3b. 处理 DOMAIN-KEYWORD (转换为 *keyword*)
+          grep -Ei "domain-keyword" all_sources.tmp | awk -F',' '{print "*" $2 "*"}' | sed 's/ //g' >> rules.tmp
+          
+          # 3c. 处理 IP-CIDR 类 (直接保留格式)[cite: 4]
+          grep -Ei "^(ip-cidr|ip6-cidr)" all_sources.tmp | awk -F',' '{print $2}' | sed 's/ //g' >> rules.tmp
+          
+          # 4. 彻底去重、清理空行并排序[cite: 4]
           sort -u rules.tmp | grep -v "^$" > unique_rules.tmp
-          
-          # 3. 计算规则总数
           rule_count=$(wc -l < unique_rules.tmp)
           
-          # 4. 生成最终文件头[cite: 4]
+          # 5. 生成最终文件[cite: 4]
           echo "! Title: AdGuardHomeAllAdBlockList" > AdGuardHomeAllAdBlockList.txt
-          echo "! Authors: zirawell, fmz200, VirgilClyne" >> AdGuardHomeAllAdBlockList.txt
+          echo "! Authors: zirawell, fmz200, VirgilClyne, ACL4SSR" >> AdGuardHomeAllAdBlockList.txt
           echo "! Last Updated: $(date '+%Y-%m-%d %H:%M:%S') (UTC)" >> AdGuardHomeAllAdBlockList.txt
           echo "! Total Rules: $rule_count" >> AdGuardHomeAllAdBlockList.txt
           echo "!" >> AdGuardHomeAllAdBlockList.txt
-
-          # 5. 合并规则主体
           cat unique_rules.tmp >> AdGuardHomeAllAdBlockList.txt
 
       - name: Commit and Push
@@ -51,7 +53,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add AdGuardHomeAllAdBlockList.txt
           if git diff --staged --quiet; then
-            echo "No changes detected."
+            echo "No changes."
             exit 0
           fi
           git commit -m "Auto-update: $rule_count rules on $(date +'%Y-%m-%d')"
