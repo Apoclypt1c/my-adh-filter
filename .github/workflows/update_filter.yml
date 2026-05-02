@@ -18,12 +18,10 @@ jobs:
         run: |
           # 1. 下载源文件
           curl -sL "https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list" -o s1.txt
-          curl -sL "https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/filter.list" -o s2.txt
-          curl -sL "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/HTTPDNS.Block.list" -o s3.txt
-          curl -sL "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list" -o s4.txt
+          curl -sL "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/HTTPDNS.Block.list" -o s2.txt
           
           # 2. 合并并初步清理：删除空行和以 # 或 ; 开头的纯注释行
-          cat s1.txt s2.txt s3.txt s4.txt | sed 's/ //g' | grep -vE "^(#|;|$)" > clean_source.tmp
+          cat s1.txt s2.txt | sed 's/ //g' | grep -vE "^(#|;|$)" > clean_source.tmp
 
           # 3. 深度解析逻辑
           # 3a. 提取 HOST/DOMAIN 类 (转换为 ||domain.com^)
@@ -42,7 +40,7 @@ jobs:
           
           # 5. 生成结果文件
           echo "! Title: AdGuardHomeAllAdBlockList" > AdGuardHomeAllAdBlockList.txt
-          echo "! Authors: zirawell, fmz200, VirgilClyne, ACL4SSR" >> AdGuardHomeAllAdBlockList.txt
+          echo "! Authors: zirawell, VirgilClyne" >> AdGuardHomeAllAdBlockList.txt
           echo "! Last Updated: $(date '+%Y-%m-%d %H:%M:%S') (UTC)" >> AdGuardHomeAllAdBlockList.txt
           echo "! Total Rules: $rule_count" >> AdGuardHomeAllAdBlockList.txt
           echo "!" >> AdGuardHomeAllAdBlockList.txt
