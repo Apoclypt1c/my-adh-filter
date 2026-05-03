@@ -1,6 +1,6 @@
 ! Title: AdGuardHomeAllAdBlockList
 ! Authors: zirawell, VirgilClyne
-! Last Updated: 2026-05-02 05:24:25 (UTC)
+! Last Updated: 2026-05-03 03:41:23 (UTC)
 ! Total Rules: 1442
 !
 *-ad.byteoversea.com*
