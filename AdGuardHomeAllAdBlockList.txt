@@ -1,7 +1,7 @@
 ! Title: AdGuardHomeAllAdBlockList
 ! Authors: zirawell, VirgilClyne
-! Last Updated: 2026-05-03 03:41:23 (UTC)
-! Total Rules: 1442
+! Last Updated: 2026-05-04 03:39:23 (UTC)
+! Total Rules: 1444
 !
 *-ad.byteoversea.com*
 *-adsystem.com*
@@ -1036,6 +1036,7 @@
 ||n.3g.163.com^
 ||n.mark.letv.com^
 ||nadvideo2.baidu.com^
+||nakedeye.360buyimg.com^
 ||nbsdk-baichuan.alicdn.com^
 ||nc004x.corp.youdao.com^
 ||nc045x.corp.youdao.com^
@@ -1245,6 +1246,7 @@
 ||static.g.ppstream.com^
 ||staticadm.leju.sina.com.cn^
 ||statistic.live.126.net^
+||storage11.360buyimg.com^
 ||storage23.360buyimg.com^
 ||store.iqiyi.com^
 ||store.tv.api.3g.youku.com^
