@@ -1,7 +1,7 @@
 ! Title: AdGuardHomeAllAdBlockList
 ! Authors: zirawell, VirgilClyne
-! Last Updated: 2026-05-05 03:26:02 (UTC)
-! Total Rules: 1448
+! Last Updated: 2026-05-06 03:36:49 (UTC)
+! Total Rules: 1449
 !
 *-ad.byteoversea.com*
 *-adsystem.com*
@@ -199,6 +199,7 @@
 ||abapi.hellobike.com^
 ||abtest.alibaba.com^
 ||abtest3-misc.zijieapi.com^
+||accuratead.cn^
 ||acdn.adnxs.com^
 ||acs4baichuan.m.taobao.com^
 ||activeqq.3g.qq.com^
