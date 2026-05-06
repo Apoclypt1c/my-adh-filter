@@ -23,16 +23,16 @@ jobs:
           # 1. 下载源文件
           curl -sL "https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list" -o s1.txt
 
-          # 暂时不要把 HTTPDNS 全局加入路由器
-          # curl -sL "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/HTTPDNS.Block.list" -o s2.txt
+          curl -sL "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list" -o s2.txt
 
-          # 2. 清理空行、注释、空格
-          cat s1.txt \
-            | sed 's/[[:space:]]//g' \
-            | grep -vE "^(#|;|!|$)" \
+          # 2. 清理空行、注释、行首行尾空格
+          cat s1.txt s2.txt \
+            | sed 's/\r$//' \
+            | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' \
+            | grep -vE "^(#|;|!|//|$)" \
             > clean_source.tmp
 
-          # 3. 只转换域名类规则
+          # 3. 只转换低风险域名类规则
           > rules.tmp
 
           # DOMAIN,example.com / HOST,example.com
@@ -45,18 +45,21 @@ jobs:
             | awk -F',' '{print "||" $2 "^"}' \
             >> rules.tmp || true
 
-          # 4. 主动排除高风险关键词和无效项
-          grep -vE "^\*\w+\*$" rules.tmp \
-            | grep -vE "^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/[0-9]+$" \
+          # 4. 合法性过滤 + 去重
+          grep -Ei '^\|\|[A-Za-z0-9_.-]+\^$' rules.tmp \
             | grep -vE "^\|\|localhost\^$" \
+            | grep -vE "^\|\|\.\^$" \
+            | grep -vE "\.\.\." \
             | sort -u \
             > unique_rules.tmp
 
           rule_count=$(wc -l < unique_rules.tmp)
 
           # 5. 生成结果文件
-          echo "! Title: AdGuardHomeAllAdBlockList - Conservative" > AdGuardHomeAllAdBlockList.txt
-          echo "! Authors: zirawell, Apoclypt1c" >> AdGuardHomeAllAdBlockList.txt
+          echo "! Title: AdGuardHomeAllAdBlockList - Conservative Plus" > AdGuardHomeAllAdBlockList.txt
+          echo "! Authors: zirawell, blackmatrix7, Apoclypt1c" >> AdGuardHomeAllAdBlockList.txt
+          echo "! Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list" >> AdGuardHomeAllAdBlockList.txt
+          echo "! Source 2: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list" >> AdGuardHomeAllAdBlockList.txt
           echo "! Last Updated: $(date '+%Y-%m-%d %H:%M:%S') (UTC)" >> AdGuardHomeAllAdBlockList.txt
           echo "! Total Rules: $rule_count" >> AdGuardHomeAllAdBlockList.txt
           echo "!" >> AdGuardHomeAllAdBlockList.txt
@@ -73,5 +76,5 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Auto-update conservative AGH rules on $(date +'%Y-%m-%d')"
+          git commit -m "Auto-update conservative plus AGH rules on $(date +'%Y-%m-%d')"
           git push
