@@ -2,7 +2,7 @@
 ! Authors: zirawell, blackmatrix7, Apoclypt1c
 ! Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list
 ! Source 2: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-! Last Updated: 2026-05-15 03:53:05 (UTC)
+! Last Updated: 2026-05-16 03:34:54 (UTC)
 ! Total Rules: 37412
 !
 ||00-gov.cn^
