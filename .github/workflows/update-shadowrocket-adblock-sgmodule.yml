@@ -1,0 +1,421 @@
+name: Update shadowrocket-adblock sgmodule
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  convert_and_push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download sources and build sgmodule
+        run: |
+          set -euo pipefail
+
+          OUT="shadowrocket-adblock.sgmodule"
+
+          mkdir -p sources build
+
+          # 1. 下载源文件
+          curl -fL --retry 3 --retry-delay 5 \
+            "https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule" \
+            -o sources/rstore_all_adblock.sgmodule
+
+          curl -fL --retry 3 --retry-delay 5 \
+            "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list" \
+            -o sources/awavenue_ads_rule_surge.list
+
+          curl -fL --retry 3 --retry-delay 5 \
+            "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list" \
+            -o sources/blackmatrix7_advertising_lite_qx.list
+
+          # 2. 构建 Shadowrocket / Surge 兼容 sgmodule
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+          import datetime
+          from urllib.parse import urlparse
+
+          SRC_DIR = Path("sources")
+          OUT = Path("shadowrocket-adblock.sgmodule")
+
+          rule_set = set()
+          rewrite_set = set()
+          mitm_hosts = set()
+
+          current_section = None
+
+          domain_re = re.compile(
+              r"^(?=.{1,253}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{1,62}$",
+              re.I
+          )
+
+          ipv4_cidr_re = re.compile(
+              r"^(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)/(?:[0-9]|[12][0-9]|3[0-2])$"
+          )
+
+          ipv6_cidr_re = re.compile(
+              r"^[0-9A-Fa-f:.]+/(?:[0-9]|[1-9][0-9]|1[01][0-9]|12[0-8])$"
+          )
+
+          keyword_re = re.compile(r"^[A-Za-z0-9_.-]+$")
+
+          bad_domains = {
+              "localhost",
+              "local",
+              "lan",
+              "home.arpa",
+              "invalid",
+              "example",
+              "example.com",
+              "example.org",
+              "example.net",
+              ".",
+          }
+
+          unsafe_mitm_suffixes = (
+              ".apple.com",
+              ".icloud.com",
+              ".mzstatic.com",
+              ".crashlytics.com",
+          )
+
+          def clean_line(line: str) -> str:
+              line = line.replace("\r", "").strip()
+              if line.startswith("- "):
+                  line = line[2:].strip()
+              return line.strip().strip('"').strip("'")
+
+          def strip_inline_comment(line: str) -> str:
+              # 避免破坏 URL 中的 //
+              for sep in (" #", " ;"):
+                  if sep in line:
+                      line = line.split(sep, 1)[0].strip()
+              return line
+
+          def clean_domain(value: str) -> str:
+              d = value.strip().strip('"').strip("'").lower()
+              d = d.replace("*.", ".")
+              d = d.lstrip(".")
+              d = d.rstrip(".")
+              return d
+
+          def is_valid_domain(value: str) -> bool:
+              d = clean_domain(value)
+              if not d or d in bad_domains:
+                  return False
+              if ".." in d:
+                  return False
+              return bool(domain_re.match(d))
+
+          def is_safe_mitm_host(host: str) -> bool:
+              host = clean_domain(host)
+              if not is_valid_domain(host):
+                  return False
+              if host.endswith(unsafe_mitm_suffixes):
+                  return False
+              return True
+
+          def normalize_policy(policy: str) -> str:
+              p = policy.strip().upper()
+              if p in {"REJECT", "REJECT-DROP", "REJECT-NO-DROP"}:
+                  return "REJECT"
+              if p == "DIRECT":
+                  return "DIRECT"
+              if p == "REJECT-TINYGIF":
+                  return "REJECT-TINYGIF"
+              return "REJECT"
+
+          def add_rule(rule_type: str, value: str, policy: str = "REJECT", extra=None):
+              rule_type = rule_type.upper().strip()
+              policy = normalize_policy(policy)
+              value = value.strip().strip('"').strip("'")
+
+              if extra is None:
+                  extra = []
+
+              # 为了 Shadowrocket 最大兼容，仅保留 no-resolve；
+              # 丢弃 Surge 扩展参数 pre-matching / extended-matching 等。
+              kept_extra = []
+              for item in extra:
+                  item = item.strip()
+                  if item.lower() == "no-resolve":
+                      kept_extra.append("no-resolve")
+
+              if rule_type in {"HOST", "DOMAIN"}:
+                  d = clean_domain(value)
+                  if is_valid_domain(d):
+                      rule_set.add(f"DOMAIN,{d},{policy}")
+                  return
+
+              if rule_type in {"HOST-SUFFIX", "DOMAIN-SUFFIX"}:
+                  d = clean_domain(value)
+                  if is_valid_domain(d):
+                      rule_set.add(f"DOMAIN-SUFFIX,{d},{policy}")
+                  return
+
+              if rule_type in {"HOST-KEYWORD", "DOMAIN-KEYWORD"}:
+                  k = value.lower().strip()
+                  if keyword_re.match(k) and k not in {"", ".", "-", "_"}:
+                      rule_set.add(f"DOMAIN-KEYWORD,{k},{policy}")
+                  return
+
+              if rule_type in {"HOST-WILDCARD", "DOMAIN-WILDCARD"}:
+                  w = value.lower().strip()
+                  if w.startswith("*.") and is_valid_domain(w[2:]):
+                      rule_set.add(f"DOMAIN-SUFFIX,{clean_domain(w[2:])},{policy}")
+                  elif "*" in w and re.match(r"^[A-Za-z0-9*_.-]+$", w):
+                      rule_set.add(f"DOMAIN-WILDCARD,{w},{policy}")
+                  return
+
+              if rule_type == "IP-CIDR":
+                  cidr = value.strip()
+                  if ipv4_cidr_re.match(cidr):
+                      rule_set.add(f"IP-CIDR,{cidr},{policy},no-resolve")
+                  return
+
+              if rule_type in {"IP-CIDR6", "IP6-CIDR"}:
+                  cidr = value.strip()
+                  if ipv6_cidr_re.match(cidr):
+                      rule_set.add(f"IP-CIDR6,{cidr},{policy},no-resolve")
+                  return
+
+              if rule_type == "USER-AGENT":
+                  # Shadowrocket/Surge 都有 UA 类规则，但 iOS 15+ 下 HTTPS 非 MITM 场景 UA 不可靠。
+                  # 保留为规则层 REJECT，避免转成 URL Rewrite。
+                  ua = value.strip()
+                  if ua:
+                      rule_set.add(f"USER-AGENT,{ua},{policy}")
+                  return
+
+          def add_rewrite(regex: str, replacement: str = "_", action: str = "reject"):
+              regex = regex.strip()
+              replacement = replacement.strip() or "_"
+              action = action.strip().lower()
+
+              if not regex:
+                  return
+
+              if action not in {"reject", "302", "307", "header"}:
+                  action = "reject"
+
+              rewrite_set.add(f"{regex} {replacement} {action}")
+
+              for host in infer_hosts_from_regex(regex):
+                  if is_safe_mitm_host(host):
+                      mitm_hosts.add(host)
+
+          def infer_hosts_from_regex(regex: str):
+              hosts = set()
+              s = regex
+
+              # 常见形式：
+              # ^https?:\/\/api\.example\.com\/...
+              # ^https?://api\.example\.com/...
+              s = s.replace("\\/", "/")
+
+              m = re.search(r"https?\??://([^/\^\$\(\)\[\]\|\?\+\*]+)", s)
+              if m:
+                  host = m.group(1)
+                  host = host.replace("\\.", ".")
+                  host = host.replace("\\-", "-")
+                  host = host.strip(".")
+                  if is_valid_domain(host):
+                      hosts.add(host)
+
+              # 兜底提取转义域名片段
+              for m in re.finditer(r"([A-Za-z0-9-]+(?:\\\.[A-Za-z0-9-]+){1,})", regex):
+                  host = m.group(1).replace("\\.", ".")
+                  if is_valid_domain(host):
+                      hosts.add(host)
+
+              return hosts
+
+          def parse_adguard_style(line: str) -> bool:
+              # @@||example.com^ 例外暂不写入，避免 sgmodule 里形成 allowlist 优先级歧义
+              if line.startswith("@@"):
+                  return True
+
+              m = re.match(r"^\|\|([A-Za-z0-9_.-]+)\^", line)
+              if m:
+                  add_rule("DOMAIN-SUFFIX", m.group(1), "REJECT")
+                  return True
+
+              return False
+
+          def parse_url_rewrite_line(line: str):
+              # Surge URL Rewrite:
+              # regex replacement action
+              parts = line.split()
+              if len(parts) >= 3:
+                  regex = parts[0]
+                  action = parts[-1]
+                  replacement = " ".join(parts[1:-1])
+                  add_rewrite(regex, replacement, action)
+
+          def parse_rule_line(line: str):
+              # AdGuard style
+              if parse_adguard_style(line):
+                  return
+
+              # AWAvenue domain-set style: .example.com
+              if line.startswith(".") and "," not in line:
+                  d = clean_domain(line)
+                  if is_valid_domain(d):
+                      add_rule("DOMAIN-SUFFIX", d, "REJECT")
+                  return
+
+              # Bare domain style: example.com
+              if "," not in line and is_valid_domain(line):
+                  add_rule("DOMAIN", line, "REJECT")
+                  return
+
+              parts = [p.strip() for p in line.split(",")]
+              if not parts:
+                  return
+
+              head = parts[0].upper()
+
+              # QuantumultX:
+              # URL-REGEX,^https://xxx,REJECT
+              if head == "URL-REGEX" and len(parts) >= 2:
+                  regex = parts[1]
+                  policy = parts[2] if len(parts) >= 3 else "REJECT"
+                  if normalize_policy(policy) == "REJECT":
+                      add_rewrite(regex, "_", "reject")
+                  return
+
+              # 普通规则
+              if len(parts) >= 2:
+                  value = parts[1]
+                  policy = parts[2] if len(parts) >= 3 else "REJECT"
+                  extra = parts[3:] if len(parts) > 3 else []
+
+                  if head in {
+                      "DOMAIN", "DOMAIN-SUFFIX", "DOMAIN-KEYWORD", "DOMAIN-WILDCARD",
+                      "HOST", "HOST-SUFFIX", "HOST-KEYWORD", "HOST-WILDCARD",
+                      "IP-CIDR", "IP-CIDR6", "IP6-CIDR",
+                      "USER-AGENT",
+                  }:
+                      add_rule(head, value, policy, extra)
+                      return
+
+              # 其他复杂规则：AND / OR / NOT / RULE-SET / DOMAIN-SET 等不直接塞入
+              return
+
+          def parse_file(path: Path):
+              global current_section
+
+              current_section = None
+              text = path.read_text(encoding="utf-8", errors="ignore")
+
+              for raw in text.splitlines():
+                  line = clean_line(raw)
+                  if not line:
+                      continue
+
+                  # metadata / comments
+                  if line.startswith(("#", "!", ";", "//")):
+                      continue
+
+                  if line.startswith("[") and line.endswith("]"):
+                      current_section = line.strip().lower()
+                      continue
+
+                  line = strip_inline_comment(line)
+                  if not line:
+                      continue
+
+                  if current_section == "[url rewrite]":
+                      parse_url_rewrite_line(line)
+                      continue
+
+                  if current_section in {None, "[rule]"}:
+                      parse_rule_line(line)
+                      continue
+
+                  # 非目标 section 跳过
+                  continue
+
+          for path in sorted(SRC_DIR.glob("*")):
+              if path.is_file():
+                  parse_file(path)
+
+          final_rules = sorted(rule_set)
+          final_rewrites = sorted(rewrite_set)
+          final_mitm_hosts = sorted(mitm_hosts)
+
+          rule_count = len(final_rules)
+          rewrite_count = len(final_rewrites)
+          mitm_count = len(final_mitm_hosts)
+
+          if rule_count < 1000:
+              raise SystemExit(f"Generated rule count is too low: {rule_count}")
+
+          now = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+
+          lines = [
+              "#!name=shadowrocket-adblock",
+              "#!desc=Adblock sgmodule for Shadowrocket. Sources: R-Store allAdBlock, AWAvenue Ads Rule, blackmatrix7 AdvertisingLite. Includes compatible [Rule], [URL Rewrite] and conditional [MITM].",
+              "#!author=GitHub Actions",
+              "#!tag=AdBlock",
+              "",
+              "# Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule",
+              "# Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list",
+              "# Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list",
+              f"# Last Updated: {now}",
+              f"# Rule Count: {rule_count}",
+              f"# URL Rewrite Count: {rewrite_count}",
+              f"# MITM Host Count: {mitm_count}",
+              "",
+              "[Rule]",
+          ]
+
+          lines.extend(final_rules)
+
+          if final_rewrites:
+              lines.extend([
+                  "",
+                  "[URL Rewrite]",
+              ])
+              lines.extend(final_rewrites)
+
+          if final_mitm_hosts:
+              lines.extend([
+                  "",
+                  "[MITM]",
+                  "hostname = %APPEND% " + ", ".join(final_mitm_hosts),
+              ])
+
+          OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+          print(f"Generated {OUT}")
+          print(f"Rules: {rule_count}")
+          print(f"URL Rewrite: {rewrite_count}")
+          print(f"MITM Hosts: {mitm_count}")
+          PY
+
+      - name: Commit and Push
+        run: |
+          set -euo pipefail
+
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git add shadowrocket-adblock.sgmodule
+
+          if git diff --staged --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+
+          git commit -m "Auto-update shadowrocket-adblock sgmodule on $(date -u +'%Y-%m-%d')"
+          git push
