@@ -6,9 +6,9 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-05-17 03:02:46 UTC
-# Rule Count: 39181
-# URL Rewrite Count: 631
+# Last Updated: 2026-05-18 04:12:14 UTC
+# Rule Count: 39182
+# URL Rewrite Count: 632
 # MITM Host Count: 463
 
 [Rule]
@@ -39163,6 +39163,7 @@ IP-CIDR,59.82.121.216/32,REJECT,no-resolve
 IP-CIDR,59.82.121.222/32,REJECT,no-resolve
 IP-CIDR,59.82.121.72/32,REJECT,no-resolve
 IP-CIDR,59.82.122.151/32,REJECT,no-resolve
+IP-CIDR,59.82.133.36/32,REJECT,no-resolve
 IP-CIDR,59.82.133.78/32,REJECT,no-resolve
 IP-CIDR,59.82.14.1/32,REJECT,no-resolve
 IP-CIDR,59.82.14.161/32,REJECT,no-resolve
@@ -39525,7 +39526,7 @@ IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve
 ^https?:\/\/gaia\.ch\.com\/ECPromotion\/appFlash - reject
 ^https?:\/\/gateway\.36kr\.com\/api\/adx\/ad\/show - reject
 ^https?:\/\/gateway\.cotticoffee\.com\/cotti-capi\/person\/homeLoginPrompt - reject
-^https?:\/\/gdlf\.bosc\.cn(:\d+)?\/static\/upload\/pro\/resource\/(?!1762370|1939565|205225856)\w+\.jpg$ - reject
+^https?:\/\/gdlf\.bosc\.cn(:\d+)?\/static\/upload\/pro\/resource\/(?!1762370|1939565|20543596)\w+\.jpg$ - reject
 ^https?:\/\/gfp\.veta\.naver\.com\/adcall\? - reject
 ^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/app_index\/get_ceramic_chip_area - reject
 ^https?:\/\/go\.babytree\.com\/go_pregnancy\/api\/cms_second_tab\/topic_tab_list - reject
@@ -39549,7 +39550,8 @@ IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve
 ^https?:\/\/gw\.line\.naver\.jp\/tr\/event$ - reject
 ^https?:\/\/h5\.m\.goofish\.com\/app\/idleFish-F2e\/idlefish-pop - reject
 ^https?:\/\/hcz-member\.pingan\.com\.cn\/micro-api\/homepage\/do\/app\/popbox\/getTopPopBox - reject
-^https?:\/\/helper\.2bulu\.com\/(greenPea\/queryTasks|proSpecial\/allData|saveSplashFrequencyStatistics|getPopInfo|getAppEntranceConfig|promote\/list|getSplash|outing\/reqFoundNewList|outing\/reqIndex) - reject
+^https?:\/\/helper\.2bulu\.com(\/v\d)?\/advert - reject
+^https?:\/\/helper\.2bulu\.com\/(?>greenPea\/queryTasks|proSpecial\/allData|saveSplashFrequencyStatistics|getPopInfo|getAppEntranceConfig|promote\/list|getSplash|outing\/reqFoundNewList|outing\/reqIndex) - reject
 ^https?:\/\/hoapp\.juneyaoair\.com\/data\/index\/(?>queryPopUpWinPic|getLoadPic|getRecommendProduct|creditCardAd) - reject
 ^https?:\/\/home\.mi\.com\/cgi-op\/api\/v\d\/recommendation - reject
 ^https?:\/\/huichuan\.sm\.cn\/nativead - reject
