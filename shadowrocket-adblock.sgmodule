@@ -6,9 +6,9 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-05-19 04:06:30 UTC
-# Rule Count: 39176
-# URL Rewrite Count: 632
+# Last Updated: 2026-05-20 04:07:17 UTC
+# Rule Count: 39174
+# URL Rewrite Count: 633
 # MITM Host Count: 463
 
 [Rule]
@@ -39083,7 +39083,6 @@ IP-CIDR,202.104.1.27/32,REJECT,no-resolve
 IP-CIDR,202.105.165.202/32,REJECT,no-resolve
 IP-CIDR,203.107.1.0/24,REJECT,no-resolve
 IP-CIDR,203.107.63.154/32,REJECT,no-resolve
-IP-CIDR,203.119.204.195/32,REJECT,no-resolve
 IP-CIDR,203.119.212.22/32,REJECT,no-resolve
 IP-CIDR,203.119.238.164/32,REJECT,no-resolve
 IP-CIDR,203.119.238.63/32,REJECT,no-resolve
@@ -39157,7 +39156,6 @@ IP-CIDR,59.82.113.219/32,REJECT,no-resolve
 IP-CIDR,59.82.113.8/32,REJECT,no-resolve
 IP-CIDR,59.82.120.0/24,REJECT,no-resolve
 IP-CIDR,59.82.121.0/24,REJECT,no-resolve
-IP-CIDR,59.82.122.151/32,REJECT,no-resolve
 IP-CIDR,59.82.133.0/24,REJECT,no-resolve
 IP-CIDR,59.82.14.1/32,REJECT,no-resolve
 IP-CIDR,59.82.14.161/32,REJECT,no-resolve
@@ -39544,6 +39542,7 @@ IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve
 ^https?:\/\/gw\.line\.naver\.jp\/tr\/event$ - reject
 ^https?:\/\/h5\.m\.goofish\.com\/app\/idleFish-F2e\/idlefish-pop - reject
 ^https?:\/\/hcz-member\.pingan\.com\.cn\/micro-api\/homepage\/do\/app\/popbox\/getTopPopBox - reject
+^https?:\/\/hcz-member\.pingan\.com\.cn\/micro-api\/micro-cps-ceps-app\/box\/queryHomePagePopBox - reject
 ^https?:\/\/helper\.2bulu\.com(\/v\d)?\/advert - reject
 ^https?:\/\/helper\.2bulu\.com\/(?>greenPea\/queryTasks|proSpecial\/allData|saveSplashFrequencyStatistics|getPopInfo|getAppEntranceConfig|promote\/list|getSplash|outing\/reqFoundNewList|outing\/reqIndex) - reject
 ^https?:\/\/hoapp\.juneyaoair\.com\/data\/index\/(?>queryPopUpWinPic|getLoadPic|getRecommendProduct|creditCardAd) - reject
