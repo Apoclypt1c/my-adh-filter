@@ -6,9 +6,9 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-05-20 04:07:17 UTC
+# Last Updated: 2026-05-21 04:16:22 UTC
 # Rule Count: 39174
-# URL Rewrite Count: 633
+# URL Rewrite Count: 635
 # MITM Host Count: 463
 
 [Rule]
@@ -39616,7 +39616,9 @@ IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve
 ^https?:\/\/mage(v\d)?\.if\.qidian\.com\/argus\/api\/v\d\/young\/getconf$ - reject
 ^https?:\/\/maicai\.api\.ddxq\.mobi\/advert\/ - reject
 ^https?:\/\/maicai\.api\.ddxq\.mobi\/homeApi\/getHomeAdPop - reject
+^https?:\/\/mapi\.appvipshop\.com\/vips-mobile\/rest\/activity\/float_ball\/get - reject
 ^https?:\/\/mapi\.appvipshop\.com\/vips-mobile\/rest\/iosAdInfo\/report - reject
+^https?:\/\/mapi\.appvipshop\.com\/vips-mobile\/rest\/layout\/channel_b\/scene_data - reject
 ^https?:\/\/mapi\.dangdang\.com\/index\.php\?action=init - reject
 ^https?:\/\/mapi\.dianping\.com\/adshopping - reject
 ^https?:\/\/mapi\.dianping\.com\/mapi\/operating\/(?>indexopsmodules|loadsplashconfig) - reject
