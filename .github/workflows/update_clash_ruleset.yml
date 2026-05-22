@@ -1,0 +1,89 @@
+name: Update Clash All AdBlocker Ruleset
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  convert_and_push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download and Convert
+        run: |
+          set -euo pipefail
+
+          curl -sL "https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/QuanX/Adblock/All/filter/allAdBlock.list" -o s1.txt
+          curl -sL "https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/HTTPDNS.Block.list" -o s2.txt
+
+          cat s1.txt s2.txt | awk -F',' '
+            function trim(s) {
+              gsub(/^[ \t\r\n]+|[ \t\r\n]+$/, "", s)
+              return s
+            }
+
+            {
+              sub(/\r$/, "", $0)
+              line = trim($0)
+
+              if (line == "" || line ~ /^(#|;|!)/) {
+                next
+              }
+
+              type = toupper(trim($1))
+              value = tolower(trim($2))
+              gsub(/[ \t]/, "", value)
+
+              if (value == "") {
+                next
+              }
+
+              if (type == "HOST" || type == "DOMAIN") {
+                print "DOMAIN," value
+              } else if (type == "HOST-SUFFIX" || type == "DOMAIN-SUFFIX") {
+                print "DOMAIN-SUFFIX," value
+              } else if (type == "DOMAIN-KEYWORD" || type == "HOST-KEYWORD" || type == "KEYWORD") {
+                print "DOMAIN-KEYWORD," value
+              } else if (type == "IP-CIDR") {
+                print "IP-CIDR," value ",no-resolve"
+              } else if (type == "IP-CIDR6") {
+                print "IP-CIDR6," value ",no-resolve"
+              }
+            }
+          ' | sort -u > unique_rules.tmp
+
+          rule_count=$(wc -l < unique_rules.tmp | tr -d ' ')
+          echo "RULE_COUNT=$rule_count" >> "$GITHUB_ENV"
+
+          {
+            echo "# Title: Clash All AdBlocker Ruleset"
+            echo "# Authors: zirawell, VirgilClyne"
+            echo "# Last Updated: $(date '+%Y-%m-%d %H:%M:%S') (UTC)"
+            echo "# Total Rules: $rule_count"
+            echo "payload:"
+            awk '{ gsub(/"/, "\\\""); print "  - \"" $0 "\"" }' unique_rules.tmp
+          } > clash-alladblocker.yaml
+
+      - name: Commit and Push
+        run: |
+          set -euo pipefail
+
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git add clash-alladblocker.yaml
+
+          if git diff --staged --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+
+          git commit -m "Auto-update Clash ruleset: ${RULE_COUNT} rules on $(date +'%Y-%m-%d')"
+          git push
