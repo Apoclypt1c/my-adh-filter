@@ -2,7 +2,7 @@ name: Update ADH Filter
 
 on:
   schedule:
-    - cron: '16 0 * * *'
+    - cron: '27 0 * * *'
       timezone: 'Asia/Shanghai'
   workflow_dispatch:
 
