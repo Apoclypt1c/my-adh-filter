@@ -6,7 +6,7 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-05-24 04:10:02 UTC
+# Last Updated: 2026-05-25 04:21:26 UTC
 # Rule Count: 39180
 # URL Rewrite Count: 635
 # MITM Host Count: 463
@@ -26032,6 +26032,7 @@ DOMAIN-SUFFIX,adsfile.qq.com,REJECT
 DOMAIN-SUFFIX,adsfilebssdlbig.ali.kugou.com,REJECT
 DOMAIN-SUFFIX,adsfileretry.service.kugou.com,REJECT
 DOMAIN-SUFFIX,adsfs-sdkconfig.heytapimage.com,REJECT
+DOMAIN-SUFFIX,adsfs.heytapimage.com,REJECT
 DOMAIN-SUFFIX,adsfs.oppomobile.com,REJECT
 DOMAIN-SUFFIX,adsgroup.qq.com,REJECT
 DOMAIN-SUFFIX,adshare.freedocast.com,REJECT
@@ -29060,7 +29061,6 @@ DOMAIN-SUFFIX,dr.holaworld.cn,REJECT
 DOMAIN-SUFFIX,dragolosa.com,REJECT
 DOMAIN-SUFFIX,dragoncent.com,REJECT
 DOMAIN-SUFFIX,drc6i.cn,REJECT
-DOMAIN-SUFFIX,drcn-weather.cloud.huawei.com,REJECT
 DOMAIN-SUFFIX,drd.hauchi.com.tw,REJECT
 DOMAIN-SUFFIX,drdj.m.gxwztv.com,REJECT
 DOMAIN-SUFFIX,drdwy.com,REJECT
