@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-05-25 18:07:29 (UTC)
-# Total Rules: 1469
+# Last Updated: 2026-05-26 02:41:10 (UTC)
+# Total Rules: 1470
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -1392,6 +1392,7 @@ payload:
   - "IP-CIDR,117.185.244.212/32,no-resolve"
   - "IP-CIDR,118.89.204.198/32,no-resolve"
   - "IP-CIDR,119.29.126.137/32,no-resolve"
+  - "IP-CIDR,119.29.29.90/32,no-resolve"
   - "IP-CIDR,119.29.29.98/32,no-resolve"
   - "IP-CIDR,119.29.29.99/32,no-resolve"
   - "IP-CIDR,120.240.95.37/32,no-resolve"
