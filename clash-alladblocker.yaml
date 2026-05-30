@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-05-29 19:06:18 (UTC)
-# Total Rules: 1470
+# Last Updated: 2026-05-30 17:34:40 (UTC)
+# Total Rules: 1471
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -575,6 +575,7 @@ payload:
   - "DOMAIN-KEYWORD,mpos-pic.helipay.com"
   - "DOMAIN-KEYWORD,nbcollect.kugou.com"
   - "DOMAIN-KEYWORD,nbcollectretry.kugou.com"
+  - "DOMAIN-KEYWORD,o2o-ad-dev.oss-cn"
   - "DOMAIN-KEYWORD,ossp.voicecloud.cn"
   - "DOMAIN-KEYWORD,p3.pstatp.com"
   - "DOMAIN-KEYWORD,pagead2.google"
