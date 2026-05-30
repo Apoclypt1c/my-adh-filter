@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-05-29 18:45:28 UTC
-# Rule Count: 39181
+# Last Updated: 2026-05-30 17:33:33 UTC
+# Rule Count: 39182
 # URL Rewrite Count: 639
 # MITM Host Count: 467
 
@@ -24195,6 +24195,7 @@ DOMAIN-KEYWORD,medicine.lanjiyin.com.cn,REJECT
 DOMAIN-KEYWORD,mpos-pic.helipay.com,REJECT
 DOMAIN-KEYWORD,nbcollect.kugou.com,REJECT
 DOMAIN-KEYWORD,nbcollectretry.kugou.com,REJECT
+DOMAIN-KEYWORD,o2o-ad-dev.oss-cn,REJECT
 DOMAIN-KEYWORD,omgmta,REJECT
 DOMAIN-KEYWORD,omniture,REJECT
 DOMAIN-KEYWORD,openx,REJECT
