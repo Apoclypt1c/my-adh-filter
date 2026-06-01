@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-05-30 17:33:33 UTC
-# Rule Count: 39182
+# Last Updated: 2026-06-01 20:39:13 UTC
+# Rule Count: 39183
 # URL Rewrite Count: 639
 # MITM Host Count: 467
 
@@ -39157,6 +39157,7 @@ IP-CIDR,59.82.113.10/32,REJECT,no-resolve
 IP-CIDR,59.82.113.219/32,REJECT,no-resolve
 IP-CIDR,59.82.113.8/32,REJECT,no-resolve
 IP-CIDR,59.82.120.171/32,REJECT,no-resolve
+IP-CIDR,59.82.120.210/32,REJECT,no-resolve
 IP-CIDR,59.82.120.252/32,REJECT,no-resolve
 IP-CIDR,59.82.120.33/32,REJECT,no-resolve
 IP-CIDR,59.82.121.172/32,REJECT,no-resolve
