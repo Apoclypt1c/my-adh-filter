@@ -6,7 +6,7 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-06-29 18:27:37 UTC
+# Last Updated: 2026-07-01 18:19:32 UTC
 # Rule Count: 39177
 # URL Rewrite Count: 647
 # MITM Host Count: 474
@@ -39672,8 +39672,8 @@ IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve
 ^https?:\/\/obs\.line-scdn\.net\/0hGH\d - reject
 ^https?:\/\/ocean\.shuqireader\.com\/api\/ad\/adserver\/.+ - reject
 ^https?:\/\/ocean\.shuqireader\.com\/api\/route\/iosReadPage\/ad.+ - reject
-^https?:\/\/online\.sptcc\.com:\d+\/handapp_app\/(?>ActivityGetServlet|queryWebUrlConfig) - reject
-^https?:\/\/online\.sptcc\.com:\d+\/handapp_zx\/rss_info - reject
+^https?:\/\/online\.sptcc\.com(:\d+)?\/handapp_app\/(?>ActivityGetServlet|queryWebUrlConfig) - reject
+^https?:\/\/online\.sptcc\.com(:\d+)?\/handapp_zx\/rss_info - reject
 ^https?:\/\/open3\.vistastory\.com\/v\d\/api.*get_popup - reject
 ^https?:\/\/open3\.vistastory\.com\/v\d\/api\/index\/loading_ad - reject
 ^https?:\/\/open\.fitdays\.cn\/uploads\/ad\/ - reject
