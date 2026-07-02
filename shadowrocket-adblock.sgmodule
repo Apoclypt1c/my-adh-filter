@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-07-01 18:19:32 UTC
-# Rule Count: 39177
+# Last Updated: 2026-07-02 18:07:37 UTC
+# Rule Count: 39178
 # URL Rewrite Count: 647
 # MITM Host Count: 474
 
@@ -28661,6 +28661,7 @@ DOMAIN-SUFFIX,data.studybreakmedia.com,REJECT
 DOMAIN-SUFFIX,data.waptime.cn,REJECT
 DOMAIN-SUFFIX,data2.doodlemobile.com,REJECT
 DOMAIN-SUFFIX,datacollection.uve.weibo.com,REJECT
+DOMAIN-SUFFIX,datads.cn,REJECT
 DOMAIN-SUFFIX,datafastguru.info,REJECT
 DOMAIN-SUFFIX,datas.tianqistatic.com,REJECT
 DOMAIN-SUFFIX,datax.baidu.com,REJECT
