@@ -6,7 +6,7 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-07-07 18:24:41 UTC
+# Last Updated: 2026-07-09 18:14:27 UTC
 # Rule Count: 39178
 # URL Rewrite Count: 648
 # MITM Host Count: 475
@@ -39524,7 +39524,7 @@ IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve
 ^https?:\/\/g\.alicdn\.com\/IdleFish-F2e\/idlefish-workers\/[0-9.]+\/smartLoader - reject
 ^https?:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery\/adver - reject
 ^https?:\/\/gaia\.ch\.com\/ECMember\/psnCenter\/adversAndInfo - reject
-^https?:\/\/gaia\.ch\.com\/ECProduct\/homePageRevision\/queryRecommendInfo - reject
+^https?:\/\/gaia\.ch\.com\/ECProduct\/homePageRevision\/(?>queryRecommend|findAll)Info - reject
 ^https?:\/\/gaia\.ch\.com\/ECProduct\/popupWindow - reject
 ^https?:\/\/gaia\.ch\.com\/ECPromotion\/appFlash - reject
 ^https?:\/\/gateway\.36kr\.com\/api\/adx\/ad\/show - reject
