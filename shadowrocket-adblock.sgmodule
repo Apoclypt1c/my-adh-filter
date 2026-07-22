@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-07-20 18:25:03 UTC
-# Rule Count: 39178
+# Last Updated: 2026-07-22 17:45:04 UTC
+# Rule Count: 39176
 # URL Rewrite Count: 650
 # MITM Host Count: 476
 
@@ -28822,7 +28822,6 @@ DOMAIN-SUFFIX,diaopic.14bobo.com,REJECT
 DOMAIN-SUFFIX,diediao.com,REJECT
 DOMAIN-SUFFIX,dierqingchun.com,REJECT
 DOMAIN-SUFFIX,difnxm.cn,REJECT
-DOMAIN-SUFFIX,dig.bdurl.net,REJECT
 DOMAIN-SUFFIX,digdug.divxnetworks.com,REJECT
 DOMAIN-SUFFIX,digg.analytics.live.com,REJECT
 DOMAIN-SUFFIX,digitru.st,REJECT
@@ -32808,7 +32807,6 @@ DOMAIN-SUFFIX,mcgi.v.qq.com,REJECT
 DOMAIN-SUFFIX,mclick.simba.taobao.com,REJECT
 DOMAIN-SUFFIX,mcore.vcgame.cn,REJECT
 DOMAIN-SUFFIX,mcs.delvenetworks.com,REJECT
-DOMAIN-SUFFIX,mcs.zijieapi.com,REJECT
 DOMAIN-SUFFIX,mcupdate.gstarcad.com,REJECT
 DOMAIN-SUFFIX,md.1drj.com,REJECT
 DOMAIN-SUFFIX,md.he9630.com,REJECT
