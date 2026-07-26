@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-07-25 17:29:26 (UTC)
-# Total Rules: 1463
+# Last Updated: 2026-07-26 17:31:55 (UTC)
+# Total Rules: 1464
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -1359,6 +1359,7 @@ payload:
   - "DOMAIN-SUFFIX,wxsmsdy.video.qq.com"
   - "DOMAIN-SUFFIX,wxsnsdy.tc.qq.com"
   - "DOMAIN-SUFFIX,xdcs-collector.ximalaya.com"
+  - "DOMAIN-SUFFIX,xinstall.top"
   - "DOMAIN-SUFFIX,xwpbj.com"
   - "DOMAIN-SUFFIX,ydjs.zol.com.cn"
   - "DOMAIN-SUFFIX,ydpushserver.youdao.com"
