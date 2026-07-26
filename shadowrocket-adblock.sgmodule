@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-07-25 17:26:57 UTC
-# Rule Count: 39165
+# Last Updated: 2026-07-26 17:29:18 UTC
+# Rule Count: 39166
 # URL Rewrite Count: 651
 # MITM Host Count: 477
 
@@ -38103,6 +38103,7 @@ DOMAIN-SUFFIX,xinju.cc,REJECT
 DOMAIN-SUFFIX,xinlongrubber.com,REJECT
 DOMAIN-SUFFIX,xinray.com,REJECT
 DOMAIN-SUFFIX,xinray.net,REJECT
+DOMAIN-SUFFIX,xinstall.top,REJECT
 DOMAIN-SUFFIX,xinterface.cn,REJECT
 DOMAIN-SUFFIX,xinuocp666.com,REJECT
 DOMAIN-SUFFIX,xinyijiasc.cn,REJECT
