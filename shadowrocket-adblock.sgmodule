@@ -6,7 +6,7 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-07-26 17:29:18 UTC
+# Last Updated: 2026-07-27 17:58:57 UTC
 # Rule Count: 39166
 # URL Rewrite Count: 651
 # MITM Host Count: 477
@@ -25925,6 +25925,7 @@ DOMAIN-SUFFIX,ads-video-al.xhscdn.com,REJECT
 DOMAIN-SUFFIX,ads-video-qc.xhscdn.com,REJECT
 DOMAIN-SUFFIX,ads.95516.com,REJECT
 DOMAIN-SUFFIX,ads.979799777.com,REJECT
+DOMAIN-SUFFIX,ads.adfunlink.com,REJECT
 DOMAIN-SUFFIX,ads.aplus.pptv.com,REJECT
 DOMAIN-SUFFIX,ads.aplusapi.pptv.com,REJECT
 DOMAIN-SUFFIX,ads.auctions.yahoo.com,REJECT
@@ -26101,6 +26102,7 @@ DOMAIN-SUFFIX,adtilt.com,REJECT
 DOMAIN-SUFFIX,adtm.chip.de,REJECT
 DOMAIN-SUFFIX,adtrack.quark.cn,REJECT
 DOMAIN-SUFFIX,adtrack.ucweb.com,REJECT
+DOMAIN-SUFFIX,adtracker.adfunlink.com,REJECT
 DOMAIN-SUFFIX,adtracker.medproad.com,REJECT
 DOMAIN-SUFFIX,adtrk.me,REJECT
 DOMAIN-SUFFIX,adui.tg.meitu.com,REJECT
@@ -31100,7 +31102,6 @@ DOMAIN-SUFFIX,images.chinaz.com,REJECT
 DOMAIN-SUFFIX,images.enet.com.cn,REJECT
 DOMAIN-SUFFIX,images.gxsky.com,REJECT
 DOMAIN-SUFFIX,images.outbrainimg.com,REJECT
-DOMAIN-SUFFIX,images.pinduoduo.com,REJECT
 DOMAIN-SUFFIX,images.sohu.com,REJECT
 DOMAIN-SUFFIX,images9999.com,REJECT
 DOMAIN-SUFFIX,imageter.com,REJECT
@@ -38510,7 +38511,6 @@ DOMAIN-SUFFIX,youhm.cn,REJECT
 DOMAIN-SUFFIX,youhuomeishi.com,REJECT
 DOMAIN-SUFFIX,youjia2016.com,REJECT
 DOMAIN-SUFFIX,youka.la,REJECT
-DOMAIN-SUFFIX,youku-acs.m.taobao.com,REJECT
 DOMAIN-SUFFIX,youle.tom.com,REJECT
 DOMAIN-SUFFIX,youle55.com,REJECT
 DOMAIN-SUFFIX,youmi.net,REJECT
