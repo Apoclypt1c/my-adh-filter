@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-07-27 18:00:42 (UTC)
-# Total Rules: 1464
+# Last Updated: 2026-07-28 17:50:14 (UTC)
+# Total Rules: 1465
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -133,6 +133,7 @@ payload:
   - "DOMAIN,api.zysdsk.cn"
   - "DOMAIN,apiinit.amap.com"
   - "DOMAIN,apis.alenable.com"
+  - "DOMAIN,apm-api.huazhu.com"
   - "DOMAIN,apm-native.xiaohongshu.com"
   - "DOMAIN,apm.gotokeep.com"
   - "DOMAIN,apm.pinduoduo.com"
