@@ -1,0 +1,31 @@
+name: Auto Update PXRN Filter List
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # 每周日 00:00 UTC (北京时间 08:00) 自动运行
+  workflow_dispatch: # 支持网页端手动触发
+
+jobs:
+  update-list:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run update script
+        run: python Pxrn_update.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add PXRN-filter.list
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update PXRN-filter.list" && git push)
