@@ -1,5 +1,6 @@
 import urllib.request
 import os
+from datetime import datetime, timezone, timedelta
 
 BASE_FILE = 'PXRN-Base.list'
 OUTPUT_FILE = 'PXRN-filter.list'
@@ -47,11 +48,25 @@ try:
 except Exception as e:
     print(f"Fetch remote list error: {e}")
 
-# 3. 排序并输出至 PXRN-filter.list
+# 3. 排序与规则分类统计
 sorted_rules = sorted(list(rules), key=lambda x: (x[0], x[1]))
 
+host_count = sum(1 for r in sorted_rules if r[0] == 'host')
+suffix_count = sum(1 for r in sorted_rules if r[0] == 'host-suffix')
+keyword_count = sum(1 for r in sorted_rules if r[0] == 'host-keyword')
+total_count = len(sorted_rules)
+
+# 计算北京时间 (UTC+8)
+bj_time = datetime.now(timezone.utc) + timedelta(hours=8)
+time_str = bj_time.strftime('%Y-%m-%d %H:%M:%S UTC+8')
+
+# 4. 写入文件（头部增加状态注释）
 with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+    f.write(f"# Updated: {time_str}\n")
+    f.write(f"# Total: {total_count} (host: {host_count}, host-suffix: {suffix_count}, host-keyword: {keyword_count})\n")
+    f.write(f"# Remote Source: {V2FLY_URL}\n")
+    f.write("#\n")
     for rule_type, domain in sorted_rules:
         f.write(f"{rule_type}, {domain}\n")
 
-print(f"Updated {OUTPUT_FILE} with {len(sorted_rules)} rules.")
+print(f"Updated {OUTPUT_FILE} with {total_count} rules.")
