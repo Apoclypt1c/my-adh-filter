@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-08-26 18:07:30 UTC
-# Rule Count: 39166
+# Last Updated: 2026-08-28 01:00:08 UTC
+# Rule Count: 39165
 # URL Rewrite Count: 650
 # MITM Host Count: 476
 
@@ -5422,7 +5422,6 @@ DOMAIN,cpufan.club,REJECT
 DOMAIN,cpuim.com,REJECT
 DOMAIN,cpulaptop.com,REJECT
 DOMAIN,cpull.360.cn,REJECT
-DOMAIN,cpush.ctrip.com,REJECT
 DOMAIN,cpush.trip.com,REJECT
 DOMAIN,cpvads.com,REJECT
 DOMAIN,cpvadvertise.com,REJECT
