@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-08-30 19:22:14 (UTC)
-# Total Rules: 1465
+# Last Updated: 2026-08-31 21:32:02 (UTC)
+# Total Rules: 1466
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -542,6 +542,7 @@ payload:
   - "DOMAIN-KEYWORD,a3.pstatp.com"
   - "DOMAIN-KEYWORD,ad-sign.byteimg.com"
   - "DOMAIN-KEYWORD,ad.google"
+  - "DOMAIN-KEYWORD,adashx.ut.fliggy.com"
   - "DOMAIN-KEYWORD,adproxy.autohome.com"
   - "DOMAIN-KEYWORD,ads.amap.com"
   - "DOMAIN-KEYWORD,ads.g.doubleclick"
