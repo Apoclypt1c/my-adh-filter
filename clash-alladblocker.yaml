@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-09-01 19:27:21 (UTC)
-# Total Rules: 1466
+# Last Updated: 2026-09-02 19:26:06 (UTC)
+# Total Rules: 1469
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -166,6 +166,7 @@ payload:
   - "DOMAIN,business.msstatic.com"
   - "DOMAIN,cad.youku.com"
   - "DOMAIN,cdn.hellobike.com"
+  - "DOMAIN,cdn.ynuf.aliapp.org"
   - "DOMAIN,collect.hnair.com"
   - "DOMAIN,collect.xiaopeng.com"
   - "DOMAIN,conf-darwin.xycdn.com"
@@ -248,8 +249,10 @@ payload:
   - "DOMAIN,ggx03.miguvideo.com"
   - "DOMAIN,goblin.hupu.com"
   - "DOMAIN,gorgon.youdao.com"
+  - "DOMAIN,h-adashx.ut.ele.me"
   - "DOMAIN,hc-ssp.sm.cn"
   - "DOMAIN,hdns.ksyun.com"
+  - "DOMAIN,highway-tb.ele.me"
   - "DOMAIN,hlx.meituan.com"
   - "DOMAIN,hmma.baidu.com"
   - "DOMAIN,httpdns-api.aliyuncs.com"
