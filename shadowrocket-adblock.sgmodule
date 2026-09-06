@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-09-02 19:25:19 UTC
-# Rule Count: 39169
+# Last Updated: 2026-09-06 18:24:53 UTC
+# Rule Count: 39171
 # URL Rewrite Count: 649
 # MITM Host Count: 475
 
@@ -1123,6 +1123,7 @@ DOMAIN,acwyoynw.com,REJECT
 DOMAIN,acxiomapac.com,REJECT
 DOMAIN,ad-analysis.pconline.com.cn,REJECT
 DOMAIN,ad-api.4pyun.com,REJECT
+DOMAIN,ad-api.morefreegame.com,REJECT
 DOMAIN,ad-arata.com,REJECT
 DOMAIN,ad-back.net,REJECT
 DOMAIN,ad-balancer.net,REJECT
@@ -1924,6 +1925,7 @@ DOMAIN,adtpix.com,REJECT
 DOMAIN,adtr.io,REJECT
 DOMAIN,adtrace.org,REJECT
 DOMAIN,adtrack.calls.net,REJECT
+DOMAIN,adtrack.qianwen.com,REJECT
 DOMAIN,adtrack.xiaojukeji.com,REJECT
 DOMAIN,adtracker.adfunlink.com,REJECT
 DOMAIN,adtrackers.net,REJECT
@@ -25490,6 +25492,7 @@ DOMAIN-SUFFIX,ad.api.moji.com,REJECT
 DOMAIN-SUFFIX,ad.auditude.com,REJECT
 DOMAIN-SUFFIX,ad.bayescom.com,REJECT
 DOMAIN-SUFFIX,ad.beihai365.com,REJECT
+DOMAIN-SUFFIX,ad.bilibili.com,REJECT
 DOMAIN-SUFFIX,ad.bitmedia.io,REJECT
 DOMAIN-SUFFIX,ad.bjmama.net,REJECT
 DOMAIN-SUFFIX,ad.bmac.com.cn,REJECT
@@ -25731,6 +25734,7 @@ DOMAIN-SUFFIX,adclock.zdworks.com,REJECT
 DOMAIN-SUFFIX,adcloud.jp,REJECT
 DOMAIN-SUFFIX,adcolony.com,REJECT
 DOMAIN-SUFFIX,adcome.cn,REJECT
+DOMAIN-SUFFIX,adcommon.bilibili.com,REJECT
 DOMAIN-SUFFIX,adcontrol.tudou.com,REJECT
 DOMAIN-SUFFIX,adcore.lenovomm.com,REJECT
 DOMAIN-SUFFIX,adcount.yoka.com,REJECT
@@ -28047,9 +28051,7 @@ DOMAIN-SUFFIX,cloudmobi.net,REJECT
 DOMAIN-SUFFIX,cloudpush.iqiyi.com,REJECT
 DOMAIN-SUFFIX,clubpenguinclub.com,REJECT
 DOMAIN-SUFFIX,clvk.viki.io,REJECT
-DOMAIN-SUFFIX,cm.ad.bilibili.com,REJECT
 DOMAIN-SUFFIX,cm.ad.gifshow.com,REJECT
-DOMAIN-SUFFIX,cm.adcommon.bilibili.com,REJECT
 DOMAIN-SUFFIX,cm.adgrx.com,REJECT
 DOMAIN-SUFFIX,cm.baidu.com,REJECT
 DOMAIN-SUFFIX,cm.bilibili.com,REJECT
@@ -28061,7 +28063,6 @@ DOMAIN-SUFFIX,cm.kwad.com,REJECT
 DOMAIN-SUFFIX,cm.mct01.com,REJECT
 DOMAIN-SUFFIX,cm.netseer.com,REJECT
 DOMAIN-SUFFIX,cm.passport.iqiyi.com,REJECT
-DOMAIN-SUFFIX,cm.track.biligame.bilibili.com,REJECT
 DOMAIN-SUFFIX,cm8.lycos.com,REJECT
 DOMAIN-SUFFIX,cmap.alibaba.com,REJECT
 DOMAIN-SUFFIX,cmaxisolation.com,REJECT
@@ -36649,6 +36650,7 @@ DOMAIN-SUFFIX,track.bazonline.ch,REJECT
 DOMAIN-SUFFIX,track.bcvcmedia.com,REJECT
 DOMAIN-SUFFIX,track.berliner-kurier.de,REJECT
 DOMAIN-SUFFIX,track.bernerzeitung.ch,REJECT
+DOMAIN-SUFFIX,track.biligame.bilibili.com,REJECT
 DOMAIN-SUFFIX,track.briskfile.com,REJECT
 DOMAIN-SUFFIX,track.catalogs.com,REJECT
 DOMAIN-SUFFIX,track.cbs.com,REJECT
