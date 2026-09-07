@@ -1,6 +1,6 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-09-06 18:29:21 (UTC)
+# Last Updated: 2026-09-07 20:03:58 (UTC)
 # Total Rules: 1471
 payload:
   - "DOMAIN,a.cpic.com.cn"
