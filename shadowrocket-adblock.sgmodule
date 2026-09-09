@@ -6,9 +6,9 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-09-08 19:28:16 UTC
-# Rule Count: 39200
-# URL Rewrite Count: 649
+# Last Updated: 2026-09-09 19:19:58 UTC
+# Rule Count: 39205
+# URL Rewrite Count: 650
 # MITM Host Count: 475
 
 [Rule]
@@ -25830,6 +25830,7 @@ DOMAIN-SUFFIX,adlink-api.huan.tv,REJECT
 DOMAIN-SUFFIX,adlink.shopsafe.co.nz,REJECT
 DOMAIN-SUFFIX,adlive.cn,REJECT
 DOMAIN-SUFFIX,adlocus.com,REJECT
+DOMAIN-SUFFIX,adlog.vivo.com.cn,REJECT
 DOMAIN-SUFFIX,adm.10jqka.com.cn,REJECT
 DOMAIN-SUFFIX,adm.265g.com,REJECT
 DOMAIN-SUFFIX,adm.52swine.com,REJECT
@@ -25914,6 +25915,7 @@ DOMAIN-SUFFIX,adquan.com,REJECT
 DOMAIN-SUFFIX,adrdir.qq.com,REJECT
 DOMAIN-SUFFIX,adreach.me,REJECT
 DOMAIN-SUFFIX,adreal.cn,REJECT
+DOMAIN-SUFFIX,adreq.vivo.com.cn,REJECT
 DOMAIN-SUFFIX,adres.myaora.net,REJECT
 DOMAIN-SUFFIX,adriver-sync.rutarget.ru,REJECT
 DOMAIN-SUFFIX,adriver.ru,REJECT
@@ -26193,9 +26195,11 @@ DOMAIN-SUFFIX,adx.xiaodutv.com,REJECT
 DOMAIN-SUFFIX,adx.yiche.com,REJECT
 DOMAIN-SUFFIX,adx3.iq39.com,REJECT
 DOMAIN-SUFFIX,adxlog-adnet.vivo.com.cn,REJECT
+DOMAIN-SUFFIX,adxlog.vivo.com.cn,REJECT
 DOMAIN-SUFFIX,adxmi.com,REJECT
 DOMAIN-SUFFIX,adxpansion.com,REJECT
 DOMAIN-SUFFIX,adxserver.ad.cmvideo.cn,REJECT
+DOMAIN-SUFFIX,adxstatic.vivo.com.cn,REJECT
 DOMAIN-SUFFIX,adxvip.com,REJECT
 DOMAIN-SUFFIX,adxxx.com,REJECT
 DOMAIN-SUFFIX,adytx.com,REJECT
@@ -27433,6 +27437,7 @@ DOMAIN-SUFFIX,brain.foresee.com,REJECT
 DOMAIN-SUFFIX,brakefluid.website,REJECT
 DOMAIN-SUFFIX,branch.io,REJECT
 DOMAIN-SUFFIX,brand.sogou.com,REJECT
+DOMAIN-SUFFIX,brandadsstatic.vivo.com.cn,REJECT
 DOMAIN-SUFFIX,brandshow.58.com,REJECT
 DOMAIN-SUFFIX,brassstacker.com,REJECT
 DOMAIN-SUFFIX,brcache.madthumbs.com,REJECT
@@ -29128,6 +29133,7 @@ DOMAIN-SUFFIX,dsp.toutiao.com,REJECT
 DOMAIN-SUFFIX,dsp.wtf,REJECT
 DOMAIN-SUFFIX,dsp.youdao.com,REJECT
 DOMAIN-SUFFIX,dspleastanci.site,REJECT
+DOMAIN-SUFFIX,dsplog-adnet.vivo.com.cn,REJECT
 DOMAIN-SUFFIX,dspmnt.autohome.com.cn,REJECT
 DOMAIN-SUFFIX,dssdr.top,REJECT
 DOMAIN-SUFFIX,dsxdn.com,REJECT
@@ -31002,7 +31008,6 @@ DOMAIN-SUFFIX,iadmusicmat.music.126.net,REJECT
 DOMAIN-SUFFIX,iadmusicmatvideo.music.126.net,REJECT
 DOMAIN-SUFFIX,iads.xinmin.cn,REJECT
 DOMAIN-SUFFIX,iadsdk.apple.com,REJECT
-DOMAIN-SUFFIX,iadworkbench.apple.com,REJECT
 DOMAIN-SUFFIX,iamqqo85467.cn,REJECT
 DOMAIN-SUFFIX,iangp.com,REJECT
 DOMAIN-SUFFIX,iangs.com,REJECT
@@ -35180,7 +35185,6 @@ DOMAIN-SUFFIX,saf588.com,REJECT
 DOMAIN-SUFFIX,safe.tsgpay.cn,REJECT
 DOMAIN-SUFFIX,safe524.xyz,REJECT
 DOMAIN-SUFFIX,safebrowsing.apple,REJECT
-DOMAIN-SUFFIX,safebrowsing.urlsec.gg.com,REJECT
 DOMAIN-SUFFIX,safebrowsing.urlsec.qq.com,REJECT
 DOMAIN-SUFFIX,safeonlinesites.com,REJECT
 DOMAIN-SUFFIX,saferwet.com,REJECT
@@ -36749,6 +36753,7 @@ DOMAIN-SUFFIX,tracker.wordstream.com,REJECT
 DOMAIN-SUFFIX,tracker.yhd.com,REJECT
 DOMAIN-SUFFIX,trackersimulator.org,REJECT
 DOMAIN-SUFFIX,trackerstatistik.init-ag.de,REJECT
+DOMAIN-SUFFIX,tracking-adnet.vivo.com.cn,REJECT
 DOMAIN-SUFFIX,tracking-opi.fonpit.de,REJECT
 DOMAIN-SUFFIX,tracking-server-prod-1.zenmxapps.com,REJECT
 DOMAIN-SUFFIX,tracking.3ds.com,REJECT
@@ -39675,6 +39680,7 @@ IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve
 ^https?:\/\/mime\.baidu\.com\/v\d\/start_screen_ads\/list - reject
 ^https?:\/\/minipro\.95504\.net\/app\/json\/ad\/get(?>Pop|Index)AdData - reject
 ^https?:\/\/mobile-pic\.cache\.iciba\.com\/feeds_ad\/ - reject
+^https?:\/\/mobile\.cmbchina\.com\/gexternal - reject
 ^https?:\/\/mobile\.cmbchina\.com\/icornucopia\/accompany\/slot - reject
 ^https?:\/\/mobile\.yangkeduo\.com\/layer\/app_upgrade_popup - reject
 ^https?:\/\/mobileapi\.chebada\.com\/publicv\d\/api\/v\d+\/infodeliver\/getmerchantad - reject
