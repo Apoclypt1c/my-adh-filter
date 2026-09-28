@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-09-27 19:48:55 (UTC)
-# Total Rules: 1477
+# Last Updated: 2026-09-28 22:11:44 (UTC)
+# Total Rules: 1480
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -195,6 +195,7 @@ payload:
   - "DOMAIN,dig.bdurl.net"
   - "DOMAIN,dig.zjurl.cn"
   - "DOMAIN,discover.300hu.com"
+  - "DOMAIN,djad.nmgyhxxkj.cn"
   - "DOMAIN,dm.bytedance.com"
   - "DOMAIN,dm.pstatp.com"
   - "DOMAIN,dns.jd.com"
@@ -404,6 +405,7 @@ payload:
   - "DOMAIN,popup.dushu365.com"
   - "DOMAIN,pp-cdnfile2pcdn.msstatic.com"
   - "DOMAIN,pre-acs.youku.com"
+  - "DOMAIN,pro.dajuhl.com"
   - "DOMAIN,ptom.caohua.com"
   - "DOMAIN,push.chsi.com.cn"
   - "DOMAIN,qwapi.apple.com"
@@ -1386,6 +1388,7 @@ payload:
   - "DOMAIN-SUFFIX,zhengxiaoliu.top"
   - "DOMAIN-SUFFIX,znsv.baidu.com"
   - "DOMAIN-SUFFIX,zymo.mps.weibo.com"
+  - "DOMAIN-SUFFIX,zzspider.com"
   - "IP-CIDR,1.202.85.193/32,no-resolve"
   - "IP-CIDR,101.124.19.122/32,no-resolve"
   - "IP-CIDR,101.227.200.11/32,no-resolve"
