@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-09-29 20:55:59 (UTC)
-# Total Rules: 1480
+# Last Updated: 2026-09-30 20:54:39 (UTC)
+# Total Rules: 1481
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -151,6 +151,7 @@ payload:
   - "DOMAIN,appgoad.189.cn"
   - "DOMAIN,apple.comscoreresearch.com"
   - "DOMAIN,applog-perf.uc.cn"
+  - "DOMAIN,applog.paas.cmbchina.com"
   - "DOMAIN,applog.zijieapi.com"
   - "DOMAIN,apps-booster.xiaopeng.com"
   - "DOMAIN,appsupport.qq.com"
