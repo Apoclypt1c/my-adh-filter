@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-09-29 20:54:39 UTC
-# Rule Count: 39227
+# Last Updated: 2026-10-01 21:06:46 UTC
+# Rule Count: 39228
 # URL Rewrite Count: 653
 # MITM Host Count: 479
 
@@ -2829,6 +2829,7 @@ DOMAIN,appgo.189.cn,REJECT
 DOMAIN,appgoad.189.cn,REJECT
 DOMAIN,apple.comscoreresearch.com,REJECT
 DOMAIN,applog-perf.uc.cn,REJECT
+DOMAIN,applog.paas.cmbchina.com,REJECT
 DOMAIN,applog.zijieapi.com,REJECT
 DOMAIN,appn.center,REJECT
 DOMAIN,apportium.com,REJECT
