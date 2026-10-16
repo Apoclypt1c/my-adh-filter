@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-10-12 23:05:00 UTC
-# Rule Count: 39228
+# Last Updated: 2026-10-16 19:35:55 UTC
+# Rule Count: 39230
 # URL Rewrite Count: 655
 # MITM Host Count: 481
 
@@ -1668,6 +1668,7 @@ DOMAIN,ads-4u.com,REJECT
 DOMAIN,ads-d.viber.com,REJECT
 DOMAIN,ads-elsevier.net,REJECT
 DOMAIN,ads-for-free.com,REJECT
+DOMAIN,ads-img-al.xhscdn.com,REJECT
 DOMAIN,ads-img-qc.xhscdn.com,REJECT
 DOMAIN,ads-marketing-vivofs.vivo.com.cn,REJECT
 DOMAIN,ads-pixiv.net,REJECT
@@ -24160,6 +24161,7 @@ DOMAIN-KEYWORD,ad.google,REJECT
 DOMAIN-KEYWORD,admarvel,REJECT
 DOMAIN-KEYWORD,admaster,REJECT
 DOMAIN-KEYWORD,adproxy.autohome.com,REJECT
+DOMAIN-KEYWORD,ads-splash-i,REJECT
 DOMAIN-KEYWORD,ads.amap.com,REJECT
 DOMAIN-KEYWORD,ads.g.doubleclick,REJECT
 DOMAIN-KEYWORD,ads.microsoft.com,REJECT
