@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-10-15 19:56:50 (UTC)
-# Total Rules: 1481
+# Last Updated: 2026-10-16 19:36:55 (UTC)
+# Total Rules: 1483
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -60,6 +60,7 @@ payload:
   - "DOMAIN,admarketing.yahoo.net"
   - "DOMAIN,admusicpic.music.126.net"
   - "DOMAIN,adpinpai.video.weibocdn.com"
+  - "DOMAIN,ads-img-al.xhscdn.com"
   - "DOMAIN,ads-img-qc.xhscdn.com"
   - "DOMAIN,ads-shopping.shouqianba.com"
   - "DOMAIN,ads-video-al.xhscdn.com"
@@ -555,6 +556,7 @@ payload:
   - "DOMAIN-KEYWORD,ad-sign.byteimg.com"
   - "DOMAIN-KEYWORD,ad.google"
   - "DOMAIN-KEYWORD,adproxy.autohome.com"
+  - "DOMAIN-KEYWORD,ads-splash-i"
   - "DOMAIN-KEYWORD,ads.amap.com"
   - "DOMAIN-KEYWORD,ads.g.doubleclick"
   - "DOMAIN-KEYWORD,ads.microsoft.com"
