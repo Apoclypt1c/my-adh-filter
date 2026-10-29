@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-10-24 18:51:23 UTC
-# Rule Count: 39241
+# Last Updated: 2026-10-29 21:14:56 UTC
+# Rule Count: 39242
 # URL Rewrite Count: 655
 # MITM Host Count: 481
 
@@ -2799,6 +2799,7 @@ DOMAIN,apkonline.ru,REJECT
 DOMAIN,apm-api.huazhu.com,REJECT
 DOMAIN,apm-engine.meteor.com,REJECT
 DOMAIN,apm-native.xiaohongshu.com,REJECT
+DOMAIN,apm.abchina.com.cn,REJECT
 DOMAIN,apm.gotokeep.com,REJECT
 DOMAIN,apm.pinduoduo.com,REJECT
 DOMAIN,apmebf.com,REJECT
