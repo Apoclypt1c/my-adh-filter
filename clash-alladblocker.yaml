@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-11-04 22:01:05 (UTC)
-# Total Rules: 1484
+# Last Updated: 2026-11-05 22:09:07 (UTC)
+# Total Rules: 1487
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -395,6 +395,7 @@ payload:
   - "DOMAIN,news.ssp.qq.com"
   - "DOMAIN,nex.163.com"
   - "DOMAIN,nsclick.baidu.com"
+  - "DOMAIN,o.alicdn.com"
   - "DOMAIN,o2o-ad-log-gateway.alibaba.com"
   - "DOMAIN,ocsp.pki.goog"
   - "DOMAIN,open-pixon.ads-pixiv.net"
@@ -403,6 +404,7 @@ payload:
   - "DOMAIN,optimus-ads.amap.com"
   - "DOMAIN,pageviewp.icbc.com.cn"
   - "DOMAIN,perf.m.jd.com"
+  - "DOMAIN,pigeon.alicdn.com"
   - "DOMAIN,pl.cp31.ott.cibntv.net"
   - "DOMAIN,polaris.zijieapi.com"
   - "DOMAIN,popup.dushu365.com"
@@ -1444,6 +1446,7 @@ payload:
   - "IP-CIDR,203.107.63.154/32,no-resolve"
   - "IP-CIDR,203.119.212.22/32,no-resolve"
   - "IP-CIDR,203.119.238.164/32,no-resolve"
+  - "IP-CIDR,203.119.238.25/32,no-resolve"
   - "IP-CIDR,203.119.238.63/32,no-resolve"
   - "IP-CIDR,210.13.85.204/32,no-resolve"
   - "IP-CIDR,39.97.128.148/32,no-resolve"
