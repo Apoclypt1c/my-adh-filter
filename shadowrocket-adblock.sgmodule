@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-11-04 21:58:55 UTC
-# Rule Count: 39242
+# Last Updated: 2026-11-06 21:38:13 UTC
+# Rule Count: 39245
 # URL Rewrite Count: 655
 # MITM Host Count: 481
 
@@ -14597,6 +14597,7 @@ DOMAIN,o-oo.ooo,REJECT
 DOMAIN,o-s.io,REJECT
 DOMAIN,o.4x25v.cn,REJECT
 DOMAIN,o.a0shop.top,REJECT
+DOMAIN,o.alicdn.com,REJECT
 DOMAIN,o.gweini.com,REJECT
 DOMAIN,o.nkwwpw.com,REJECT
 DOMAIN,o12zs3u2n.com,REJECT
@@ -15603,6 +15604,7 @@ DOMAIN,pictureturn.com,REJECT
 DOMAIN,picznhen.com,REJECT
 DOMAIN,piercial.com,REJECT
 DOMAIN,pietexture.com,REJECT
+DOMAIN,pigeon.alicdn.com,REJECT
 DOMAIN,pigra.csheaven.com,REJECT
 DOMAIN,piifwkvdil.com,REJECT
 DOMAIN,pijlvpsqf.com,REJECT
@@ -39148,6 +39150,7 @@ IP-CIDR,203.107.1.0/24,REJECT,no-resolve
 IP-CIDR,203.107.63.154/32,REJECT,no-resolve
 IP-CIDR,203.119.212.22/32,REJECT,no-resolve
 IP-CIDR,203.119.238.164/32,REJECT,no-resolve
+IP-CIDR,203.119.238.25/32,REJECT,no-resolve
 IP-CIDR,203.119.238.63/32,REJECT,no-resolve
 IP-CIDR,205.209.138.102/32,REJECT,no-resolve
 IP-CIDR,210.13.85.204/32,REJECT,no-resolve
