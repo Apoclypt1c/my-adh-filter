@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-11-06 21:38:13 UTC
-# Rule Count: 39245
+# Last Updated: 2026-11-07 20:19:36 UTC
+# Rule Count: 39246
 # URL Rewrite Count: 655
 # MITM Host Count: 481
 
@@ -16613,6 +16613,7 @@ DOMAIN,qdlhprdtwhvgxuzklovisrdbkhptpfarrbcmtrxbzlvhygqisv.com,REJECT
 DOMAIN,qdmil.com,REJECT
 DOMAIN,qdxrhg.com,REJECT
 DOMAIN,qdykmiarpuph.com,REJECT
+DOMAIN,qdzx.cib.com.cn,REJECT
 DOMAIN,qecweqpczciic.com,REJECT
 DOMAIN,qefyaspzyhcb.com,REJECT
 DOMAIN,qeivncvk.com,REJECT
