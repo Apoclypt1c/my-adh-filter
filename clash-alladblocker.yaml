@@ -1,7 +1,7 @@
 # Title: Clash All AdBlocker Ruleset
 # Authors: zirawell, VirgilClyne
-# Last Updated: 2026-11-13 22:03:23 (UTC)
-# Total Rules: 1491
+# Last Updated: 2026-11-14 20:50:33 (UTC)
+# Total Rules: 1490
 payload:
   - "DOMAIN,a.cpic.com.cn"
   - "DOMAIN,aaid.uyunad.com"
@@ -241,7 +241,6 @@ payload:
   - "DOMAIN,fp-it.fengkongcloud.com"
   - "DOMAIN,free-aos-cdn-image.amap.com"
   - "DOMAIN,g1.163.com"
-  - "DOMAIN,g1.tagtic.cn"
   - "DOMAIN,g3.letv.com"
   - "DOMAIN,gather.colorfulclouds.net"
   - "DOMAIN,gdfp.gifshow.com"
@@ -345,7 +344,6 @@ payload:
   - "DOMAIN,log-verify.mob.com"
   - "DOMAIN,log.17gwx.com"
   - "DOMAIN,log.cmbchina.com"
-  - "DOMAIN,log.tagtic.cn"
   - "DOMAIN,log.web.kugou.com"
   - "DOMAIN,log.ycapp.yiche.com"
   - "DOMAIN,logs-bigdata.yeehaw.com.cn"
@@ -1280,6 +1278,7 @@ payload:
   - "DOMAIN-SUFFIX,t.sj.qq.com"
   - "DOMAIN-SUFFIX,t7z.cupid.iqiyi.com"
   - "DOMAIN-SUFFIX,ta.qq.com"
+  - "DOMAIN-SUFFIX,tagtic.cn"
   - "DOMAIN-SUFFIX,tajs.qq.com"
   - "DOMAIN-SUFFIX,tappx.com"
   - "DOMAIN-SUFFIX,tb060x.corp.youdao.com"
