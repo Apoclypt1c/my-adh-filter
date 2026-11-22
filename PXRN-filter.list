@@ -1,5 +1,5 @@
-# Updated: 2026-11-15 13:05:13 UTC+8
-# Total: 6409 (host: 3, host-suffix: 6406, host-keyword: 0)
+# Updated: 2026-11-22 13:24:46 UTC+8
+# Total: 6410 (host: 3, host-suffix: 6407, host-keyword: 0)
 # Remote Source: https://raw.githubusercontent.com/v2fly/domain-list-community/refs/heads/master/data/category-porn
 #
 host, anime-rule34-world.b-cdn.net
@@ -188,6 +188,7 @@ host-suffix, 51dh.site
 host-suffix, 51lieqi.com
 host-suffix, 51luoli.info
 host-suffix, 51mh.app
+host-suffix, 51papaya.com
 host-suffix, 51pincha.cc
 host-suffix, 520aa.tv
 host-suffix, 520avtv.com
