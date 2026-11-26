@@ -6,8 +6,8 @@
 # Source 1: https://raw.githubusercontent.com/zirawell/R-Store/refs/heads/main/Rule/Surge/Adblock/All/allAdBlock.sgmodule
 # Source 2: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge.list
 # Source 3: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/QuantumultX/AdvertisingLite/AdvertisingLite.list
-# Last Updated: 2026-11-21 21:43:18 UTC
-# Rule Count: 39263
+# Last Updated: 2026-11-26 00:32:15 UTC
+# Rule Count: 39264
 # URL Rewrite Count: 654
 # MITM Host Count: 480
 
@@ -23776,6 +23776,7 @@ DOMAIN,zcjxeitlmnuq.com,REJECT
 DOMAIN,zckpaeifoq.com,REJECT
 DOMAIN,zckphynp.com,REJECT
 DOMAIN,zconfig.alibabausercontent.com,REJECT
+DOMAIN,zconfig.elemecdn.com,REJECT
 DOMAIN,zcoup.com,REJECT
 DOMAIN,zcovfcongwmn.com,REJECT
 DOMAIN,zcrfefgrg.com,REJECT
